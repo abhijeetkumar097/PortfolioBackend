@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: portfolio
+
+  data:
+    mongodb:
+      host: localhost
+      database: portfolio
+
+server:
+  port: 8081

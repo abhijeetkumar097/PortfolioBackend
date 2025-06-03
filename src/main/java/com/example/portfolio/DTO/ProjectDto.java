@@ -16,7 +16,8 @@ public class ProjectDto {
     private String name;
     private String description;
     private String imgUrl;
-    private String githubUrl;
+    private String githubUrl1;
+    private String githubUrl2;
     private String liveUrl;
     private List<String> techStack = new ArrayList<>();
 }

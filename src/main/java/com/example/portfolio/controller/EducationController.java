@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:5173/")
 @Slf4j
 @RestController
 @RequestMapping("/education")
@@ -27,6 +28,7 @@ public class EducationController {
         return educations.stream().map(education -> new EducationDto(
                 education.getId().toHexString(),
                 education.getInstituteName(),
+                education.getDegree(),
                 education.getAddress(),
                 education.getPincode(),
                 education.getCgpa(),

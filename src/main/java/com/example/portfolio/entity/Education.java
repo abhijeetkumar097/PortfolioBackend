@@ -16,6 +16,7 @@ public class Education {
     @Id
     private ObjectId id;
     private String instituteName;
+    private String degree;
     private String address;
     private String pincode;
     private String cgpa;

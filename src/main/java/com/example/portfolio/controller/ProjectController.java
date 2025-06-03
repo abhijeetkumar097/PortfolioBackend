@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/project")
 @Slf4j
@@ -31,7 +32,8 @@ public class ProjectController {
                 project.getName(),
                 project.getDescription(),
                 project.getImgUrl(),
-                project.getGithubUrl(),
+                project.getGithubUrl1(),
+                project.getGithubUrl2(),
                 project.getLiveUrl(),
                 project.getTechStack()
         )).collect(Collectors.toList());

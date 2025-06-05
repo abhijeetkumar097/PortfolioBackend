@@ -7,5 +7,22 @@ spring:
       host: localhost
       database: portfolio
 
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "mail"
+    password: "app password"
+    properties:
+      mail:
+        smtp:
+          auto: true
+          starttls:
+            enable: true
+
 server:
   port: 8081
+
+MYMAIL: "mail@gmail.com"
+
+

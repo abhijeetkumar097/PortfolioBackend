@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/mail")
-@CrossOrigin(origins = "http://localhost:5173/")
 public class MailController {
     @Autowired
     private MailService service;

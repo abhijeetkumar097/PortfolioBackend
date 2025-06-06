@@ -1,20 +1,15 @@
 package com.example.portfolio.controller;
 
-import com.example.portfolio.DTO.SkillDto;
 import com.example.portfolio.entity.Skill;
 import com.example.portfolio.service.SkillService;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:5173/")
 @Slf4j
 @RestController
 @RequestMapping("/skill")
@@ -23,14 +18,8 @@ public class SkillController {
     private SkillService service;
 
     @GetMapping
-    public List<SkillDto> getSkills() {
-        List<Skill> skills = service.getAll();
-        return skills.stream().map(skill -> new SkillDto(
-                skill.getId().toHexString(),
-                skill.getType(),
-                skill.getName(),
-                skill.getProficiency()
-        )).collect(Collectors.toList());
+    public String Check() {
+        return "Ok";
     }
 
     @PostMapping

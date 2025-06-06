@@ -1,7 +1,5 @@
 package com.example.portfolio.controller;
 
-import com.example.portfolio.DTO.ProjectDto;
-import com.example.portfolio.entity.Education;
 import com.example.portfolio.entity.Project;
 import com.example.portfolio.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,31 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/project")
 @Slf4j
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
-
-
-    @GetMapping
-    public List<ProjectDto> getAllProjects() {
-        List<Project> projects = projectService.getAll();
-
-        return projects.stream().map(project -> new ProjectDto(
-                project.getId().toHexString(), // convert ObjectId to string
-                project.getName(),
-                project.getDescription(),
-                project.getImgUrl(),
-                project.getGithubUrl1(),
-                project.getGithubUrl2(),
-                project.getLiveUrl(),
-                project.getTechStack()
-        )).collect(Collectors.toList());
-    }
-
 
     @PostMapping
     public ResponseEntity<?> add(@RequestBody Project project) {

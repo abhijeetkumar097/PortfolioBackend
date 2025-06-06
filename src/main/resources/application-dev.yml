@@ -1,13 +1,14 @@
 spring:
   application:
     name: portfolio
-
   data:
     mongodb:
       host: localhost
       database: portfolio
-
-
+  security:
+    user:
+      name: "admin"
+      password: "pass"
   mail:
     host: smtp.gmail.com
     port: 587
@@ -19,7 +20,6 @@ spring:
           auto: true
           starttls:
             enable: true
-
 server:
   port: 8081
 

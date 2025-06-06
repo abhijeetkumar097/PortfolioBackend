@@ -1,6 +1,5 @@
 package com.example.portfolio.controller;
 
-import com.example.portfolio.DTO.EducationDto;
 import com.example.portfolio.entity.Education;
 import com.example.portfolio.service.EducationService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,33 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:5173/")
 @Slf4j
 @RestController
 @RequestMapping("/education")
 public class EducationController {
     @Autowired
     private EducationService educationService;
-
-    @GetMapping
-    public List<EducationDto> getEducation() {
-        List<Education> educations = educationService.getEducation();
-        return educations.stream().map(education -> new EducationDto(
-                education.getId().toHexString(),
-                education.getInstituteName(),
-                education.getDegree(),
-                education.getAddress(),
-                education.getPincode(),
-                education.getCgpa(),
-                education.getPercentage(),
-                education.getDescription(),
-                education.getDuration()
-        )).collect(Collectors.toList());
-    }
 
     @PostMapping
     public ResponseEntity<?> addEducation(@RequestBody Education education) {

@@ -1,28 +1,30 @@
 spring:
   application:
     name: portfolio
-  data:
-    mongodb:
-      host: localhost
-      database: portfolio
+
   security:
     user:
-      name: "admin"
-      password: "pass"
+      name: ${SPRING_SECURITY_USERNAME}
+      password: ${SPRING_SECURITY_PASSWORD}
+
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: ${MONGO_DATABASE}
+
   mail:
     host: smtp.gmail.com
     port: 587
-    username: "mail"
-    password: "app password"
+    username: ${APP_USERNAME}
+    password: ${APP_PASSWORD}
     properties:
       mail:
         smtp:
-          auto: true
+          auth: true
           starttls:
             enable: true
+
 server:
   port: 8081
 
-MYMAIL: "mail@gmail.com"
-
-
+MYMAIL: ${MYMAIL}

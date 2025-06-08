@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: .
+    container_name: portfolio-backend
+    ports:
+      - 8081:8081
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_SECURITY_USERNAME=${SPRING_SECURITY_USERNAME}
+      - SPRING_SECURITY_PASSWORD=${SPRING_SECURITY_PASSWORD}
+      - MONGO_URI=${MONGO_URI}
+      - MONGO_DATABASE=${MONGO_DATABASE}
+      - APP_USERNAME=${APP_USERNAME}
+      - APP_PASSWORD=${APP_PASSWORD}
+      - MYMAIL=${MYMAIL}  

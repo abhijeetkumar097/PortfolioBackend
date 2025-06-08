@@ -1,9 +1,5 @@
 package com.example.portfolio.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer;
-import com.fasterxml.jackson.databind.ser.std.ObjectArraySerializer;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

@@ -5,7 +5,6 @@
     
     COPY . .
     
-    # Make Maven wrapper executable and build the project
     RUN chmod +x mvnw && ./mvnw clean package -DskipTests
     
     # --- Stage 2: Runtime ---
@@ -13,10 +12,9 @@
     
     WORKDIR /app
     
-    # Copy only the built JAR
     COPY --from=build /app/target/*.jar app.jar
     
-    EXPOSE 8081
+    EXPOSE 8080
     
     # Run the Spring Boot application
     CMD ["java", "-jar", "app.jar"]

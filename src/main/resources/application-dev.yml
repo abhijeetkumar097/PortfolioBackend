@@ -25,6 +25,6 @@ spring:
             enable: true
 
 server:
-  port: 8081
+  port: ${PORT:8080}
 
 MYMAIL: ${MYMAIL}

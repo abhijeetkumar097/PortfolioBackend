@@ -1,15 +1,17 @@
 package com.example.portfolio.controller;
 
 import com.example.portfolio.DTO.*;
+import com.example.portfolio.jwt.JwtUtil;
 import com.example.portfolio.service.*;
 
 import lombok.extern.slf4j.Slf4j;
 
 import com.example.portfolio.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +31,23 @@ public class PublicController {
     private ProjectService projectService;
     @Autowired
     private SkillService skillService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserEntity userEntity) {
+        String username = userEntity.getUserName();
+
+        if(username.equals(userService.getUserName()) && passwordEncoder.matches(userEntity.getPassword(), userService.getPassword())) {
+            String token = jwtUtil.generateToken(username);
+            return new ResponseEntity<>(new ResponseToken(token), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
 
     @GetMapping("/certificate")
     public List<CertificateDto> getCertificates() {

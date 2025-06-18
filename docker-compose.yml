@@ -12,4 +12,5 @@ services:
       - MONGO_DATABASE=${MONGO_DATABASE}
       - APP_USERNAME=${APP_USERNAME}
       - APP_PASSWORD=${APP_PASSWORD}
-      - MYMAIL=${MYMAIL}  
+      - MYMAIL=${MYMAIL}
+      - FrontEndURL=${FrontEndURL}
